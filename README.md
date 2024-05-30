@@ -23,7 +23,7 @@ Este repositório contém a camada de domínio do projeto desenvolvido para a Fa
 1. Clone o repositório:
 
    ```
-   git clone https://github.com/seu-usuario/dominio-repositorio.git
+   git clone https://github.com/seuUsuario/Paineiras-Eventos-dominio.git
    cd dominio-repositorio
    ```
 
