@@ -40,5 +40,5 @@ Este repositório contém a camada de domínio do projeto desenvolvido para a Fa
 
 ## Contato
 
-- Nome: [Carlos D Moro]
-- E-mail: [ti.demoro@gmail.com]
+- Nome: Carlos D Moro
+- E-mail: ti.demoro@gmail.com
