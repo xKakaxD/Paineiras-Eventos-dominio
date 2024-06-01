@@ -6,29 +6,38 @@ public class Usuario {
 	private String senha;
 	private String cpf;
 	private String email;
-	private String endereco;
+	private String telefone;
 	private String dataNascimento;
 	private String dataAniversario;
 	private Character genero;
-	private String GeneroString;
-	private static int ultimoId = 0;
+	private Character tipoUsuario;
+	private static int ultimoId;
 	
 	public Usuario() {
 	}
 	
 	public Usuario(Integer idUsuario, String nome, String cpf, 
-			String senha, String email, String endereco, String dataNascimento,
-			Character genero) {
+			String senha, String email,String  telefone, String dataNascimento,
+			Character genero, Character tipoUsuario) {
 		this.idUsuario = gerarNovoId();
 		this.nome=nome;
 		this.cpf=cpf;
 		this.senha=senha;
 		this.email=email;
-		this.endereco=endereco;
+		this.telefone=telefone;
 		this.dataNascimento=dataNascimento;
-		this.dataAniversario= dataAniversario();
+		this.dataAniversario = dataAniversario();
 		this.genero=genero;
-		this.GeneroString=getGeneroString();
+		this.tipoUsuario=tipoUsuario;
+		
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public int getIdUsuario() {
@@ -68,15 +77,7 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-	
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}  
+	}														
 	
 	public String getDataNascimento() {
 		return dataNascimento;
@@ -117,6 +118,30 @@ public class Usuario {
                 return "Outros";
         }
     }
+    
+	public String getTipoUsuarioString() {
+		switch (this.tipoUsuario){
+		case '1': 
+			return "Administrador";
+		case '2':
+			return "Funcionário";
+		case '3':
+			return "Morador";
+		case '0':
+			return "Usuário bloqueado";
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + this.tipoUsuario);
+		}
+	}
+
+	public void setTipoUsuario(Character tipoUsuario) {
+		if (tipoUsuario == '1' || tipoUsuario == '2' || tipoUsuario =='3') { // 1 para adm | 2 para  funcionario | 3 para morador
+			this.tipoUsuario = tipoUsuario;
+		} else {
+			this.tipoUsuario = '0'; // Define como 0 BLOQUEADO caso não definido morador ou funcionário
+		}
+		
+	}
 	
 	// Sobrescrevendo o método equals para comparar objetos da classe Usuario
     @Override
@@ -147,7 +172,7 @@ public class Usuario {
 	}
 	
 	// Gerando um id e incrementando antes da exibição pois começa no 0
-	private static synchronized int gerarNovoId() {
+	private static synchronized int gerarNovoId() { //TODO: verificação se o id está abaixo, mas quando incluir o bd tem auto increment no mysql
         return ++ultimoId;
     }
 	
