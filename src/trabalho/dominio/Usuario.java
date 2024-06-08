@@ -31,6 +31,7 @@ public class Usuario {
 		this.tipoUsuario=tipoUsuario;
 		
 	}
+	
 
 	public String getTelefone() {
 		return telefone;
@@ -68,7 +69,11 @@ public class Usuario {
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		if (senha == "") {
+			this.senha = "senha@2024";
+		} else {
+			this.senha = senha;
+		}
 	}
 
 	public String getEmail() {
@@ -175,6 +180,7 @@ public class Usuario {
 	private static synchronized int gerarNovoId() { //TODO: verificação se o id está abaixo, mas quando incluir o bd tem auto increment no mysql
         return ++ultimoId;
     }
+	
 	
 
 }
