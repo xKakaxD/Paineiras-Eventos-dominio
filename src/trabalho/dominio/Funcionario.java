@@ -33,9 +33,9 @@ public class Funcionario extends Usuario{
 
 	public String getTurnoString() {
 		switch (this.turno){
-		case '1': 
+		case 'D': 
 			return "Diurno";
-		case '2':
+		case 'N':
 			return "Noturno";
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + this.turno);
@@ -43,7 +43,7 @@ public class Funcionario extends Usuario{
 	}
 
 	public void setTurno(Character turno) {
-		if (turno == '1' || turno == '2') { // 1 Diurno | 2 Noturno
+		if (turno == 'D' || turno == 'N') { // D = Diurno | N = Noturno
 			this.turno = turno;
 		} else {
 			 setTipoUsuario('0'); // Define o usuário como 0 BLOQUEADO, caso não definido locatário ou proprietário
